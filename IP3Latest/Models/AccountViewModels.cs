@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace IP3Latest.Models
 {
@@ -48,10 +49,10 @@ namespace IP3Latest.Models
 
     public class LoginViewModel
     {
+
         [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [Display(Name = "Username")]
+        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -60,6 +61,8 @@ namespace IP3Latest.Models
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
+
+        public bool Archived { get; set; }
     }
 
     public class RegisterViewModel
@@ -68,6 +71,12 @@ namespace IP3Latest.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        //ensures the username is unique through index
+        [Required(ErrorMessage = "Username must be unique")]
+        [Display(Name = "Username")]
+        [Index("IX_UsernameUnique", 1, IsUnique = true)]
+        public string UserName { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
@@ -79,6 +88,17 @@ namespace IP3Latest.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        [Required]
+        public bool Archived { get; set; }
     }
 
     public class ResetPasswordViewModel
@@ -110,3 +130,4 @@ namespace IP3Latest.Models
         public string Email { get; set; }
     }
 }
+

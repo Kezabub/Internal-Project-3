@@ -1,0 +1,40 @@
+﻿
+@model IP3Latest.Models.Document
+
+@{
+    ViewBag.Title = "DeleteDistributee";
+}
+
+
+
+<h2>Remove Distributee</h2>
+
+<dt>
+    @Html.DisplayNameFor(model => model.DocTitle)
+</dt>
+
+<dd>
+    @Html.DisplayFor(model => model.DocTitle)
+</dd>
+
+<dt>
+    @Html.DisplayNameFor(model => model.RevisionNumber)
+</dt>
+
+<dd>
+    @Html.DisplayFor(model => model.RevisionNumber)
+</dd>
+
+<dd>
+    @Html.DisplayFor(model => model.Distributee)
+</dd>
+
+<div class="form-horizontal">
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Delete" class="btn btn-danger" />
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    </div>
+</div>
+

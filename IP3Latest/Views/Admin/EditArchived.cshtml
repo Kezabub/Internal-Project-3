@@ -1,0 +1,29 @@
+﻿@model IP3Latest.Models.AdminArchivedModels
+
+@{
+    ViewBag.Title = "Edit Archived - " + Model.FullName;
+}
+<h2>Edit Password - @Model.FullName</h2>
+
+@using (Html.BeginForm("EditArchived", "Admin", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Id)
+
+    <div class="row">
+        <div class="col-md-2">
+            @Html.LabelFor(m => m.Archived)
+        </div>
+        <div class="col-md-2">
+            @Html.EditorFor(m => m.Archived)
+            @Html.ValidationMessageFor(m => m.Archived, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <input type="submit" class="btn btn-primary" value="Submit" />
+}
+<br />
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

@@ -1,0 +1,104 @@
+﻿@model PagedList.IPagedList<IP3Latest.Models.Document>
+@using PagedList.Mvc;
+
+
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Documents List</h2>
+<div class="bs-docs-section">
+    <div class="row">
+        @using (Html.BeginForm("Index", "documents", FormMethod.Get))
+        {
+
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">Find: </span>
+                    @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                    <span class="input-group-btn" id="utility">
+                        <input type="submit" class="btn btn-primary" value="Search" />
+                    </span>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<h2>My Documents</h2>
+
+
+<p>
+    @if (User.IsInRole("Document Author"))
+    {
+    @Html.ActionLink("Create New", "Create")
+    }
+</p>
+<table class="table table-striped table-hover">
+    <tr>
+        <th>
+            @Html.ActionLink("Document Title", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            Document Author
+        </th>
+        <th>
+            @Html.ActionLink("Revision Number", "Index", new { sortOrder = ViewBag.PriceSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            Document Status
+        </th>
+        <th>
+            Creation Date
+        </th>
+        <th>
+            Activation Date
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DocTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DocumentAuthor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RevisionNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DocumentStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActivationDate)
+            </td>
+            <td>
+                @if (User.IsInRole("Document Author"))
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.DocumentID })
+                }
+                |
+                @if (User.IsInRole("Document Author"))
+                {
+                    @Html.ActionLink("Delete", "Delete", new { id = item.DocumentID })
+                }
+                |
+                @if (User.IsInRole("Document Author"))
+                {
+                    @Html.ActionLink("Change Status", "ChangeStatus", new { id = item.DocumentID })
+                }
+                |
+                @Html.ActionLink("Details", "Details", new { id = item.DocumentID })
+            </td>
+        </tr>
+    }
+</table>
+<br />
+
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index",
+new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

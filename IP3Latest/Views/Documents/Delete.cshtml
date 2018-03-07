@@ -1,0 +1,45 @@
+﻿@model IP3Latest.Models.Document
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Document</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DocTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DocTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RevisionNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RevisionNumber)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

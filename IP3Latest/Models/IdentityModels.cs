@@ -16,14 +16,21 @@ namespace IP3Latest.Models
             // Add custom user claims here
             return userIdentity;
         }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public bool Archived { get; set; }
+
+        public string FullName => this.FirstName + " " + this.LastName;
     }
 
+    //creates the database with the required tables
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+        public DbSet<Document> Documents { get; set; }
 
         public static ApplicationDbContext Create()
         {

@@ -1,0 +1,86 @@
+﻿@model IP3Latest.Models.Document
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+<h2>Details</h2>
+
+<div>
+    <h4>Document</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DocTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DocTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RevisionNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RevisionNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DocumentAuthor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DocumentAuthor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DocumentStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DocumentStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FilePath)
+        </dt>
+
+        <dd>
+            <a>@Html.DisplayFor(model => model.FilePath)</a>
+        </dd>
+    </dl>
+
+
+
+    @ViewBag.Message
+</div>
+@if (User.IsInRole("Document Author"))
+{
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DocumentID }) |
+    @Html.ActionLink("Add Attachment", "AddAttachment", new { id = Model.DocumentID })
+    |
+    @Html.ActionLink("Remove Distributee", "RemoveDistributee", new { id = Model.DocumentID })
+    |
+    @Html.ActionLink("Remove Attachment", "RemoveAttachment", new { id = Model.DocumentID }) 
+    |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+    }
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

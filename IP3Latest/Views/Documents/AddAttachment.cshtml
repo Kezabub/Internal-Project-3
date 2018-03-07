@@ -1,0 +1,39 @@
+﻿@model IP3Latest.Models.Document
+
+@{
+    ViewBag.Title = "AddAttachment";
+}
+
+
+
+<h2>Add Attachment</h2>
+
+
+@using (Html.BeginForm("AddAttachment", "Documents", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(model => model.DocumentID)
+    @Html.HiddenFor(model => model.CreationDate)
+    @Html.HiddenFor(model => model.DocumentStatus)
+    @Html.HiddenFor(model => model.DocTitle)
+    @Html.HiddenFor(model => model.ActivationDate)
+
+    <div>
+        @Html.TextBox("file", "", new { type = "file"})
+
+
+        <input type="submit" class="btn btn-primary" value="Upload" />
+
+        @ViewBag.Message
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+

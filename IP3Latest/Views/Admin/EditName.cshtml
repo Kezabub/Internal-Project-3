@@ -1,0 +1,39 @@
+﻿@model IP3Latest.Models.AdminNameModels
+
+@{
+    ViewBag.Title = "Edit Name - " + Model.FullName;
+}
+<h2>Edit Name - @Model.FullName</h2>
+
+@using (Html.BeginForm("EditName", "Admin", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Id)
+
+    <div class="row">
+        <div class="col-md-2">
+            @Html.LabelFor(m => m.FirstName)
+        </div>
+        <div class="col-md-2">
+            @Html.EditorFor(m => m.FirstName)
+            @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-2">
+            @Html.LabelFor(m => m.LastName)
+        </div>
+        <div class="col-md-2">
+            @Html.EditorFor(m => m.LastName)
+            @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <input type="submit" class="btn btn-primary" value="Submit" />
+}
+<br />
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

@@ -4,6 +4,19 @@
     ViewBag.Title = "Locked Out";
 }
 
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="Content/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="Content/simple-sidebar.css" rel="stylesheet">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+
 <hgroup>
     <h1 class="text-danger">Locked out.</h1>
     <h2 class="text-danger">This account has been locked out, please try again later.</h2>

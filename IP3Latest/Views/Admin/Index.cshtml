@@ -1,0 +1,45 @@
+﻿@model IP3Latest.Models.AdminIndexModels
+
+
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Users List</h2>
+
+<table class="table table-striped table-hover">
+    <tr>
+        <th>
+            User Name
+        </th>
+        <th>
+            Full Name
+        </th>
+        <th>
+            Archived Status
+        </th>
+        <th>
+            Actions
+        </th>
+    </tr>
+    @foreach (var user in Model.Users)
+    {
+        <tr>
+            <td>
+                @user.UserName
+            </td>
+            <td>
+                @user.FullName
+            </td>
+            <td>
+                @user.Archived
+            </td>
+            <td>
+                @Html.ActionLink("Edit Name", "EditName", new { id = user.Id }) |
+                @Html.ActionLink("Edit Password", "EditPassword", new { id = user.Id }) |
+                @Html.ActionLink("Edit Archived", "EditArchived", new { id = user.Id })
+            </td>
+        </tr>
+    }
+</table>
+<br />
+
