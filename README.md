@@ -8,7 +8,7 @@ GETTING STARTED:
 
 Once you download the project you will need to reseed the database by doing update-database -verbose in the packet manager console. Users will have to interact with the default accounts to make the program work for them see the migration file for the default account logins
 
-Installing
+INSTALLING
 
 Simple download the code and follow the steps in the getting started section to get this working
 
@@ -31,3 +31,7 @@ When document authors edit documents a new version of the document is created
 when a document is set to active a new version of it is created
 
 distributees can view documents but cannot interact with them
+
+LAST UPDATE:
+
+Fixed bugs the remained in the code which resulted in crashes if the database was not seeded first
