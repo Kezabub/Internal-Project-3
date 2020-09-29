@@ -77,7 +77,7 @@ namespace IP3Latest.Controllers
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var user = await this.UserManager.FindByNameAsync(model.UserName);
 
-            if (user.Archived)
+            if (user?.Archived == true)
             {
                 ModelState.AddModelError("", "Invalid login attempt - Your're archived mate");
                 return View(model);
