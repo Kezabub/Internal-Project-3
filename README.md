@@ -15,11 +15,19 @@ Simple download the code and follow the steps in the getting started section to 
 USAGE:
 
 Admins are the only users who can create new users
+
 Admins can edit users names, passwords and whether their account is archive or not (if your account is archived you cannot sign in till your account is unarchived)
+
 Admins can created new roles
+
 Admins can also give accounts new roles including administrator, distrubutee and document author
+
 All users can view their own documents
+
 Document Authors can create new documents
+
 When document authors edit documents a new version of the document is created
+
 when a document is set to active a new version of it is created
+
 distributees can view documents but cannot interact with them
